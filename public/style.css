@@ -213,19 +213,27 @@ button:hover {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
   margin: 0;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 #results li {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   transition: 0.3s;
   text-align: center;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #results li:hover {
@@ -235,13 +243,14 @@ button:hover {
 
 /* 🖼️ 宝可梦图片 */
 #results img {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  flex-shrink: 0;
 }
 
 /* ⭐ 闪光效果 */
@@ -776,6 +785,14 @@ input[type="checkbox"] {
   background: linear-gradient(135deg, #fde047, #facc15);
 }
 
+/* 📱 中等屏幕响应式设计 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #results ol {
+    max-width: 700px;
+    gap: 16px;
+  }
+}
+
 /* 📱 响应式设计 */
 @media (max-width: 768px) {
   .navbar__container,
@@ -859,8 +876,10 @@ input[type="checkbox"] {
   }
   
   #results ol {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 12px;
+    max-width: 100%;
   }
   
   #results img {
@@ -881,6 +900,12 @@ input[type="checkbox"] {
   
   .hero {
     padding: 40px 0;
+  }
+  
+  #results ol {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 16px;
   }
   
   .feature-card {
