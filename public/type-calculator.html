@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Calculator - Randompoke</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar__brand">
+                <a href="/" class="navbar__logo">🎲 Randompoke</a>
+            </div>
+            <div class="navbar__menu">
+                <a href="/index-new.html" class="navbar__link">Random Generator</a>
+                <a href="/team-builder.html" class="navbar__link">Team Builder</a>
+                <a href="/type-calculator.html" class="navbar__link navbar__link--active">Type Calculator</a>
+                <a href="/favorites.html" class="navbar__link">My Favorites</a>
+            </div>
+            <div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <header style="text-align: center; margin-bottom: 2rem; margin-top: 2rem;">
+            <h1>📊 Type Calculator</h1>
+            <p>Calculate type effectiveness and battle advantages instantly</p>
+        </header>
+
+        <main style="text-align: center; padding: 2rem;">
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                <h2>🚧 Coming Soon!</h2>
+                <p>The Type Calculator feature is currently under development.</p>
+                <p>Soon you'll be able to:</p>
+                <ul style="text-align: left; max-width: 400px; margin: 1rem auto;">
+                    <li>⚔️ Calculate type matchup effectiveness</li>
+                    <li>🛡️ See weaknesses and resistances</li>
+                    <li>💫 Handle dual-type combinations</li>
+                    <li>📈 View damage multipliers</li>
+                    <li>🎯 Get strategic battle advice</li>
+                </ul>
+                <button onclick="window.history.back()" 
+                        style="background: linear-gradient(135deg, #4f46e5, #9333ea); border: none; padding: 12px 24px; border-radius: 10px; color: white; font-size: 16px; cursor: pointer; margin-top: 1rem;">
+                    Go Back
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('navbar--open');
+    }
+    </script>
+</body>
+</html>

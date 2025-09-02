@@ -1,0 +1,129 @@
+/* 🎨 基础背景 + 字体 */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ✨ 内容容器 */
+.container {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  padding: 24px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+/* 📌 标题 */
+h1, h2, h3 {
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* 🔗 导航链接 */
+nav a {
+  color: #facc15;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 16px;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: #fde047;
+  text-shadow: 0 0 6px #facc15;
+}
+
+/* ⚡ 按钮 */
+button {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* 📋 结果显示区域 */
+#results {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#results ol {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+#results li {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  text-align: center;
+}
+
+#results li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* 🖼️ 宝可梦图片 */
+#results img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+}
+
+/* ⭐ 闪光效果 */
+#results li.shiny {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 237, 74, 0.3));
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+#results li.shiny::after {
+  content: '✨';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 20px;
+}
+
+/* 🎨 性别颜色 */
+.male { color: #4fa8ff; }
+.female { color: #ff69b4; }
+.star { color: #ffd700; }
+
+/* 📱 响应式 */
+@media (max-width: 768px) {
+  #results ol {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  
+  #results img {
+    width: 100px;
+    height: 100px;
+  }
+}

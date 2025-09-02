@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Randompoke</title>
+	<!-- 引入全局样式 -->
+	<link rel="stylesheet" href="./style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="theme-color" content="#FFF" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+
+	<meta name="description" content="Generate random Pokémon based on region, type, and more. Try your luck and catch a shiny Pokémon!">
+
+	<link rel="canonical" href="https://randompokemon.com" />
+	<link rel="icon" href="/favicon.ico">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+	<div class="navbar__container">
+		<div class="navbar__brand">
+			<a href="/" class="navbar__logo">🎲 Randompoke</a>
+		</div>
+		<div class="navbar__menu">
+			<a href="/index-new.html" class="navbar__link navbar__link--active">Random Generator</a>
+			<a href="/team-builder.html" class="navbar__link">Team Builder</a>
+			<a href="/type-calculator.html" class="navbar__link">Type Calculator</a>
+			<a href="/favorites.html" class="navbar__link">My Favorites</a>
+		</div>
+		<div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+</nav>
+
+<!-- Generator Content -->
+<section class="generator-page">
+	<div class="generator-page__container">
+		<header class="generator-page__header">
+			<h1>Random Pokémon Generator</h1>
+		</header>
+
+	<form action="?" method="get" id="controls" class="menu" onsubmit="generateRandom(); return false;">
+		<fieldset>
+			<label>Generate <select name="n" id="n" required>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6" selected>6</option>
+			</select> Pokémon.</label>
+
+			<div class="dropdown" id="regions">
+				<button type="button" data-plural-name="Regions">All Regions</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" value="all" data-select-all="true" checked>Select All</label></li>
+						<li><label title="Generation 1 (Red, Blue, and Yellow)"><input type="checkbox" name="regions" value="kanto" checked>Kanto</label></li>
+						<li><label title="Pokémon that can be selected as rentals in Pokémon Stadium."><input type="checkbox" name="regions" value="stadium_rentals" checked>Stadium Rentals</label></li>
+						<li><label title="Generation 2 (Gold, Silver, and Crystal)"><input type="checkbox" name="regions" value="johto" checked>Johto</label></li>
+						<li><label title="Pokémon that can be selected as rentals in Pokémon Stadium 2."><input type="checkbox" name="regions" value="stadium_2_rentals" checked>Stadium 2 Rentals</label></li>
+						<li><label title="Generation 3 (Ruby, Sapphire, and Emerald)"><input type="checkbox" name="regions" value="hoenn" checked>Hoenn</label></li>
+						<li><label title="Generation 4 (Diamond, Pearl)"><input type="checkbox" name="regions" value="sinnoh" checked>Sinnoh</label></li>
+						<li><label title="Generation 4 (Platinum)"><input type="checkbox" name="regions" value="sinnoh_pt" checked>Sinnoh (Platinum)</label></li>
+						<li><label title="Generation 5 (Black and White)"><input type="checkbox" name="regions" value="unova" checked>Unova</label></li>
+						<li><label title="Generation 5 (Black 2 and White 2)"><input type="checkbox" name="regions" value="unova_b2w2" checked>Unova (B2W2)</label></li>
+						<li><label title="Generation 6 (X and Y)"><input type="checkbox" name="regions" value="kalos" checked>Kalos</label></li>
+						<li><label title="Generation 7 (Sun and Moon)"><input type="checkbox" name="regions" value="alola" checked>Alola</label></li>
+						<li><label title="Generation 7 (Ultra Sun and Ultra Moon)"><input type="checkbox" name="regions" value="alola_usum" checked>Alola (USUM)</label></li>
+						<li><label title="Generation 8 (Sword and Shield)"><input type="checkbox" name="regions" value="galar" checked>Galar</label></li>
+						<li><label title="Generation 8 (Legends: Arceus)"><input type="checkbox" name="regions" value="hisui" checked>Hisui</label></li>
+						<li><label title="Generation 9 (Scarlet and Violet)"><input type="checkbox" name="regions" value="paldea" checked>Paldea</label></li>
+						<li><label title="Generation 9 (Scarlet and Violet: Teal Mask)"><input type="checkbox" name="regions" value="kitakami" checked>Kitakami</label></li>
+						<li><label title="Generation 9 (Scarlet and Violet: Indigo Disk)"><input type="checkbox" name="regions" value="blueberry" checked>Blueberry Academy</label></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="dropdown" id="types">
+				<button type="button" data-plural-name="Types" data-allow-showing-two="true">All Types</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" name="types" value="all" data-select-all="true" checked>Select All</label></li>
+						<li><label><input type="checkbox" name="types" value="bug" checked>Bug</label></li>
+						<li><label><input type="checkbox" name="types" value="dark" checked>Dark</label></li>
+						<li><label><input type="checkbox" name="types" value="dragon" checked>Dragon</label></li>
+						<li><label><input type="checkbox" name="types" value="electric" checked>Electric</label></li>
+						<li><label><input type="checkbox" name="types" value="fairy" checked>Fairy</label></li>
+						<li><label><input type="checkbox" name="types" value="fighting" checked>Fighting</label></li>
+						<li><label><input type="checkbox" name="types" value="fire" checked>Fire</label></li>
+						<li><label><input type="checkbox" name="types" value="flying" checked>Flying</label></li>
+						<li><label><input type="checkbox" name="types" value="ghost" checked>Ghost</label></li>
+						<li><label><input type="checkbox" name="types" value="grass" checked>Grass</label></li>
+						<li><label><input type="checkbox" name="types" value="ground" checked>Ground</label></li>
+						<li><label><input type="checkbox" name="types" value="ice" checked>Ice</label></li>
+						<li><label><input type="checkbox" name="types" value="normal" checked>Normal</label></li>
+						<li><label><input type="checkbox" name="types" value="poison" checked>Poison</label></li>
+						<li><label><input type="checkbox" name="types" value="psychic" checked>Psychic</label></li>
+						<li><label><input type="checkbox" name="types" value="rock" checked>Rock</label></li>
+						<li><label><input type="checkbox" name="types" value="steel" checked>Steel</label></li>
+						<li><label><input type="checkbox" name="types" value="water" checked>Water</label></li>
+					</ul>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<div class="dropdown">
+				<button type="button" data-plural-name="Legendaries" data-name-for-count="Legendary Types" data-allow-none="true">All Legendaries</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" data-select-all="true" checked>Select All</label></li>
+
+						<li><label><input type="checkbox" id="sublegendaries" name="sublegendaries" value="true" data-short-name="Sub-Legendary" checked>Sub-Legendary Pokémon</label></li>
+						<li><label><input type="checkbox" id="legendaries" name="legendaries" value="true" data-short-name="Legendary" checked>Legendary Pokémon</label></li>
+						<li><label><input type="checkbox" id="mythicals" name="mythicals" value="true" data-short-name="Mythical" checked>Mythical Pokémon</label></li>
+
+						<li><label><input type="checkbox" id="paradox" name="paradox" value="true" data-short-name="Paradox" checked>Paradox Pokémon</label></li>
+						<li><label><input type="checkbox" id="ultraBeast" name="ultraBeast" value="true" checked>Ultra Beasts</label></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<button type="button" data-plural-name="Stages">Stages</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" id="unevolved" name="evolutionCount" value="0" checked>Unevolved</label></li>
+						<li><label><input type="checkbox" id="evolvedOnce" name="evolutionCount" value="1" checked>Evolved Once</label></li>
+						<li><label><input type="checkbox" id="evolvedTwice" name="evolutionCount" value="2" checked>Evolved Twice</label></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<button type="button" data-all-name="Fully Evolved or Not">Fully Evolved or Not</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" id="nfes" name="nfes" value="true" checked>Not Fully Evolved</label></li>
+						<li><label><input type="checkbox" id="fullyEvolved" name="fullyEvolved" value="true" checked>Fully Evolved</label></li>
+					</ul>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<label><input type="checkbox" id="sprites" name="sprites" value="true" checked>Sprites</label>
+			<label><input type="checkbox" id="natures" name="natures" value="true">Natures</label>
+			<label><input type="checkbox" id="genders" name="genders" value="true">Genders</label>
+
+			<div class="dropdown" id="formsDropdown">
+				<button type="button" data-plural-name="Forms" data-allow-showing-two="true" data-allow-none="true">Forms</button>
+				<div class="popup">
+					<ul>
+						<li><label><input type="checkbox" id="forms" name="forms" value="true" data-short-name="Forms" checked>Alternate Forms</label></li>
+						<li><label><input type="checkbox" id="megas" name="megas" value="true" data-short-name="Megas" checked>Mega Evolutions</label></li>
+						<li><label><input type="checkbox" id="gigantamaxes" name="gigantamaxes" value="true" data-short-name="Gigantamax" checked>Gigantamax Forms</label></li>
+					</ul>
+				</div>
+			</div>
+
+			<input value="Generate" type="submit" />
+		</fieldset>
+	</form>
+
+	<nav id="history">
+		<button class="hidden text" id="previous" onclick="displayPrevious()">⏪ Previous</button>
+		<button class="hidden text" id="next" onclick="displayNext()">Next ⏩</button>
+	</nav>
+
+	<section id="results"></section>
+
+	<button id="shiny-toggler" class="text is-hiding" onclick="toggleShinyDisplay()">
+		<span class="star">★</span>
+		<span id="shiny-count">0</span> shiny Pokémon
+		<span class="is-showing">&</span><span class="is-hiding">∨</span>
+	</button>
+	<section id="shiny-container" class="menu invisible">
+		<div id="shinies"></div>
+		<button class="text" onclick="clearShinies()">❌ Clear your shiny Pokémon</button>
+	</section>
+
+	</div>
+</section>
+
+<script src="/random.js"></script>
+
+<script>
+// Mobile menu toggle
+function toggleMobileMenu() {
+	const navbar = document.querySelector('.navbar');
+	navbar.classList.toggle('navbar--open');
+}
+</script>
+
+</body>
+</html>
