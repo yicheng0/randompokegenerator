@@ -5,7 +5,10 @@
       "Bash(npx http-server:*)",
       "Bash(curl:*)",
       "Bash(cp:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "WebFetch(domain:randompokegenerator.com)",
+      "Bash(git add:*)",
+      "Bash(git config:*)"
     ],
     "deny": [],
     "ask": []
