@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation Bar -->
-        <nav class="navbar">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar__container">
             <div class="navbar__brand">
                 <a href="/" class="navbar__logo">🎲 Randompoke</a>
             </div>
@@ -24,32 +24,37 @@
                 <span></span>
                 <span></span>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <header style="text-align: center; margin-bottom: 2rem; margin-top: 2rem;">
-            <h1>🧬 Team Builder</h1>
-            <p>Build your dream Pokémon team with detailed customization options</p>
-        </header>
+    <!-- Team Builder Content -->
+    <section class="feature-page">
+        <div class="feature-page__container">
+            <header class="feature-page__header">
+                <div class="feature-page__icon">🧬</div>
+                <h1>Team Builder</h1>
+                <p>Build your dream Pokémon team with detailed customization options</p>
+            </header>
 
-        <main style="text-align: center; padding: 2rem;">
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
-                <h2>🚧 Coming Soon!</h2>
-                <p>The Team Builder feature is currently under development.</p>
-                <p>Soon you'll be able to:</p>
-                <ul style="text-align: left; max-width: 400px; margin: 1rem auto;">
-                    <li>🎯 Build teams of up to 6 Pokémon</li>
-                    <li>✨ Toggle shiny variants</li>
-                    <li>🎭 Select different forms and genders</li>
-                    <li>📊 View detailed stats and movesets</li>
-                    <li>💾 Save and share your teams</li>
-                </ul>
-                <button onclick="window.history.back()" 
-                        style="background: linear-gradient(135deg, #4f46e5, #9333ea); border: none; padding: 12px 24px; border-radius: 10px; color: white; font-size: 16px; cursor: pointer; margin-top: 1rem;">
-                    Go Back
-                </button>
-            </div>
-        </main>
-    </div>
+            <main class="feature-page__content">
+                <div class="coming-soon-card">
+                    <h2>🚧 Coming Soon!</h2>
+                    <p>The Team Builder feature is currently under development.</p>
+                    <p>Soon you'll be able to:</p>
+                    <ul class="feature-list">
+                        <li>🎯 Build teams of up to 6 Pokémon</li>
+                        <li>✨ Toggle shiny variants</li>
+                        <li>🎭 Select different forms and genders</li>
+                        <li>📊 View detailed stats and movesets</li>
+                        <li>💾 Save and share your teams</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.location.href='/'">
+                        Back to Home
+                    </button>
+                </div>
+            </main>
+        </div>
+    </section>
 
     <script>
     // Mobile menu toggle
