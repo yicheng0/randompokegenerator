@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Randompoke - The Ultimate Pokémon Toolset</title>
+	<title>Free Random Pokémon Generator & Pokémon Randomizer Tool | randompokegenerator.com</title>
 	<!-- 引入全局样式 -->
 	<link rel="stylesheet" href="./style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,48 @@
 	<meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#9333ea" media="(prefers-color-scheme: dark)">
 
-	<meta name="description" content="The ultimate Pokémon toolset for trainers, strategists, and fans. Generate random Pokémon, build teams, calculate types, and save favorites.">
+	<meta name="description" content="Ultimate free random Pokémon generator and randomizer tool. Generate random Pokémon by type, region, evolution stage, and more. No login required, 100% free, supports all generations Gen 1-9.">
+	<meta name="keywords" content="random pokemon generator, pokemon randomizer, free pokemon generator, random pokemon tool, pokemon generator by type, pokemon generator by region, evolution stage pokemon randomizer">
 
 	<link rel="canonical" href="https://randompokemon.com" />
 	<link rel="icon" href="/favicon.ico">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	<link rel="manifest" href="/manifest.webmanifest">
+	
+	<!-- Structured Data -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebApplication",
+		"name": "Free Random Pokémon Generator & Pokémon Randomizer Tool",
+		"description": "Ultimate free random Pokémon generator and randomizer tool. Generate random Pokémon by type, region, evolution stage, and more. No login required, 100% free, supports all generations Gen 1-9.",
+		"url": "https://randompokegenerator.com",
+		"applicationCategory": "GameApplication",
+		"operatingSystem": "Any",
+		"offers": {
+			"@type": "Offer",
+			"price": "0",
+			"priceCurrency": "USD"
+		},
+		"featureList": [
+			"Random Pokemon Generator",
+			"Pokemon Randomizer",
+			"Type Filtering",
+			"Region Selection",
+			"Evolution Stage Filtering",
+			"Shiny Pokemon Generation",
+			"Advanced Filtering",
+			"All Generations Support",
+			"Mobile Optimized",
+			"Free Forever"
+		],
+		"audience": {
+			"@type": "Audience",
+			"audienceType": ["Streamers", "Artists", "YouTubers", "Content Creators", "TTRPG Game Masters", "Casual Fans"]
+		}
+	}
+	</script>
 </head>
 <body>
 
@@ -31,6 +66,27 @@
 			<a href="/team-builder.html" class="navbar__link">Team Builder</a>
 			<a href="/type-calculator.html" class="navbar__link">Type Calculator</a>
 			<a href="/favorites.html" class="navbar__link">My Favorites</a>
+			<div class="theme-switcher">
+				<button class="theme-switcher__button" id="themeSwitcher">
+					<span class="theme-switcher__icon">🌙</span>
+					<span class="theme-switcher__text">Theme</span>
+					<span class="theme-switcher__arrow">▼</span>
+				</button>
+				<div class="theme-switcher__dropdown" id="themeDropdown">
+					<button class="theme-switcher__option" data-theme="light">
+						<span class="theme-option__icon">☀️</span>
+						<span class="theme-option__text">Light</span>
+					</button>
+					<button class="theme-switcher__option" data-theme="dark">
+						<span class="theme-option__icon">🌙</span>
+						<span class="theme-option__text">Dark</span>
+					</button>
+					<button class="theme-switcher__option" data-theme="system">
+						<span class="theme-option__icon">💻</span>
+						<span class="theme-option__text">System</span>
+					</button>
+				</div>
+			</div>
 		</div>
 		<div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
 			<span></span>
@@ -43,89 +99,208 @@
 <!-- Hero Section -->
 <section class="hero">
 	<div class="hero__container">
-		<h1 class="hero__title">Welcome to Randompoke</h1>
-		<p class="hero__subtitle">The ultimate Pokémon toolset for trainers, strategists, and fans</p>
+		<h1 class="hero__title">Free Random Pokémon Generator & Pokémon Randomizer Tool</h1>
+		<p class="hero__subtitle">Welcome to the ultimate free random Pokémon generator and Pokémon randomizer tool. Whether you're a seasoned trainer, a casual fan, or a content creator, our platform lets you easily generate random Pokémon based on type, region, evolution stage, and more — all with one click.</p>
 		<a href="#features" class="hero__cta">
-			Start Exploring ↓
+			Generate Pokémon ↓
 		</a>
 	</div>
 </section>
 
-<!-- Features Section -->
+<!-- What is a Random Pokémon Generator Section -->
 <section id="features" class="features">
 	<div class="features__container">
+		<h2 class="features__title">What is a Random Pokémon Generator?</h2>
+		<p class="features__description">
+			A Pokémon generator is an interactive tool that allows users to randomly generate Pokémon from the complete Pokédex, including all generations. Our random Pokémon generator gives you full control to customize your experience using filters such as:
+		</p>
 		<div class="features__grid">
-			<!-- Random Generator -->
 			<div class="feature-card">
-				<div class="feature-card__icon">🎲</div>
-				<h3 class="feature-card__title">Random Generator</h3>
+				<div class="feature-card__icon"></div>
+				<h3 class="feature-card__title">Type Filtering</h3>
 				<p class="feature-card__description">
-					Generate fully customized random Pokémon with advanced filters by type, region, evolution stage and more.
+					Fire, water, electric, ghost, fairy, steel, and more - filter by any of the 18 Pokémon types.
 				</p>
-				<a href="/index-new.html" class="feature-card__button feature-card__button--yellow">
-					Try Generator
-				</a>
 			</div>
 
-			<!-- Team Builder -->
 			<div class="feature-card">
-				<div class="feature-card__icon">🧬</div>
-				<h3 class="feature-card__title">Team Builder</h3>
+				<div class="feature-card__icon"></div>
+				<h3 class="feature-card__title">Region Selection</h3>
 				<p class="feature-card__description">
-					Build your dream Pokémon team with rich stats, shiny preview, form toggles, and gender/nature options.
+					Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, Galar, Paldea - choose your favorite region.
 				</p>
-				<a href="/team-builder.html" class="feature-card__button feature-card__button--green">
-					Build a Team
-				</a>
 			</div>
 
-			<!-- Type Calculator -->
 			<div class="feature-card">
-				<div class="feature-card__icon">📊</div>
-				<h3 class="feature-card__title">Type Calculator</h3>
+				<div class="feature-card__icon"></div>
+				<h3 class="feature-card__title">Evolution Stage</h3>
 				<p class="feature-card__description">
-					Quickly calculate type effectiveness and battle damage for any Pokémon combination.
+					Base, middle, or final forms - control which evolution stage you want to see.
 				</p>
-				<a href="/type-calculator.html" class="feature-card__button feature-card__button--blue">
-					Calculate Types
-				</a>
 			</div>
 
-			<!-- My Favorites -->
 			<div class="feature-card">
-				<div class="feature-card__icon">⭐</div>
-				<h3 class="feature-card__title">My Favorites</h3>
+				<div class="feature-card__icon"></div>
+				<h3 class="feature-card__title">Special Categories</h3>
 				<p class="feature-card__description">
-					Save your favorite Pokémon, teams, or shiny results and access them anytime.
+					Legendaries, mythicals, ultra beasts, Paradox Pokémon, and more special categories.
 				</p>
-				<a href="/favorites.html" class="feature-card__button feature-card__button--purple">
-					View Favorites
-				</a>
+			</div>
+		</div>
+		<p class="features__footer">
+			Whether you're building a new challenge team, exploring Pokémon for fan art, or just want some fun, this free Pokémon tool is made for you.
+		</p>
+		<div class="features__cta">
+			<a href="/index-new.html" class="feature-card__button feature-card__button--yellow">
+				Try Random Pokemon Generator
+			</a>
+		</div>
+	</div>
+</section>
+
+<!-- Why Use a Pokémon Randomizer Section -->
+<section class="why-use">
+	<div class="why-use__container">
+		<h2 class="why-use__title">Why Use a Pokémon Randomizer?</h2>
+		<p class="why-use__intro">Our Pokémon randomizer brings excitement and surprise to any gameplay or creative project. With just one click, you can:</p>
+		<div class="why-use__benefits">
+			<div class="benefit">
+				<div class="benefit__icon"></div>
+				<h3 class="benefit__title">Build Random Teams</h3>
+				<p class="benefit__description">Build random teams for Nuzlocke runs or showdowns</p>
+			</div>
+			<div class="benefit">
+				<div class="benefit__icon"></div>
+				<h3 class="benefit__title">Discover New Pokémon</h3>
+				<p class="benefit__description">Discover lesser-known or underrated Pokémon</p>
+			</div>
+			<div class="benefit">
+				<div class="benefit__icon"></div>
+				<h3 class="benefit__title">Creative Inspiration</h3>
+				<p class="benefit__description">Generate creative prompts for drawing or content creation</p>
+			</div>
+			<div class="benefit">
+				<div class="benefit__icon"></div>
+				<h3 class="benefit__title">Balanced Teams</h3>
+				<p class="benefit__description">Create balanced teams based on types or evolution stages</p>
+			</div>
+		</div>
+		<p class="why-use__footer">Unlike other tools, our generator is 100% free and works instantly—no login, no payment, no limits.</p>
+	</div>
+</section>
+
+<!-- Key Features Section -->
+<section class="key-features">
+	<div class="key-features__container">
+		<h2 class="key-features__title">Key Features</h2>
+		<div class="key-features__grid">
+			<div class="key-feature">
+				<div class="key-feature__icon"></div>
+				<h3 class="key-feature__title">Free Forever</h3>
+				<p class="key-feature__description">This Pokémon randomizer tool is completely free. No premium features, no subscriptions, and no ads blocking your experience.</p>
+			</div>
+			<div class="key-feature">
+				<div class="key-feature__icon"></div>
+				<h3 class="key-feature__title">Advanced Filtering</h3>
+				<p class="key-feature__description">Filter Pokémon by type, region, generation, stage, or rarity. Mix and match filters to create exactly the kind of random result you want.</p>
+			</div>
+			<div class="key-feature">
+				<div class="key-feature__icon"></div>
+				<h3 class="key-feature__title">All Generations Supported</h3>
+				<p class="key-feature__description">We include Pokémon from every generation—Gen 1 to Gen 9, plus DLC regions like Kitakami and Blueberry. Whether you're a fan of the classics or the newest entries, it's all here.</p>
+			</div>
+			<div class="key-feature">
+				<div class="key-feature__icon"></div>
+				<h3 class="key-feature__title">Optimized for All Devices</h3>
+				<p class="key-feature__description">Use this tool on desktop, mobile, or tablet. It loads fast, works smoothly, and doesn't require any installation or download.</p>
+			</div>
+			<div class="key-feature">
+				<div class="key-feature__icon"></div>
+				<h3 class="key-feature__title">Shiny Pokémon Mode</h3>
+				<p class="key-feature__description">Toggle shiny mode to generate shiny Pokémon at random. Great for drawing inspiration or challenge setups.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Stats Section -->
-<section class="stats">
-	<div class="stats__container">
-		<div class="stats__grid">
-			<div class="stats__item">
-				<div class="stats__number">1000+</div>
-				<div class="stats__label">Pokémon Database</div>
+<!-- Who Is This For Section -->
+<section class="target-audience">
+	<div class="target-audience__container">
+		<h2 class="target-audience__title">Who Is This For?</h2>
+		<p class="target-audience__intro">This isn't just a fun toy—it's a useful tool for many communities:</p>
+		<div class="target-audience__grid">
+			<div class="audience">
+				<div class="audience__icon"></div>
+				<h3 class="audience__title">Streamers</h3>
+				<p class="audience__description">Add randomness to your challenges and team battles</p>
 			</div>
-			<div class="stats__item">
-				<div class="stats__number">18</div>
-				<div class="stats__label">Type Combinations</div>
+			<div class="audience">
+				<div class="audience__icon"></div>
+				<h3 class="audience__title">Artists</h3>
+				<p class="audience__description">Use random Pokémon prompts for sketching or mashups</p>
 			</div>
-			<div class="stats__item">
-				<div class="stats__number">9</div>
-				<div class="stats__label">Generations</div>
+			<div class="audience">
+				<div class="audience__icon"></div>
+				<h3 class="audience__title">YouTubers and Creators</h3>
+				<p class="audience__description">Build unique content around randomized outcomes</p>
 			</div>
-			<div class="stats__item">
-				<div class="stats__number">∞</div>
-				<div class="stats__label">Possibilities</div>
+			<div class="audience">
+				<div class="audience__icon"></div>
+				<h3 class="audience__title">TTRPG Game Masters</h3>
+				<p class="audience__description">Create unique Pokémon encounters for players</p>
 			</div>
+			<div class="audience">
+				<div class="audience__icon"></div>
+				<h3 class="audience__title">Casual Fans</h3>
+				<p class="audience__description">Just have fun and find your new favorite Pokémon</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Why Use randompokegenerator.com Section -->
+<section class="why-choose-us">
+	<div class="why-choose-us__container">
+		<h2 class="why-choose-us__title">Why Use randompokegenerator.com?</h2>
+		<p class="why-choose-us__intro">We focus on one thing: building the fastest and most reliable Pokémon randomizer. Here's what makes us stand out:</p>
+		<div class="why-choose-us__features">
+			<div class="feature">
+				<div class="feature__icon"></div>
+				<h3 class="feature__title">Loads instantly and works offline once cached</h3>
+			</div>
+			<div class="feature">
+				<div class="feature__icon"></div>
+				<h3 class="feature__title">No signup or login required</h3>
+			</div>
+			<div class="feature">
+				<div class="feature__icon"></div>
+				<h3 class="feature__title">Ad-free experience</h3>
+			</div>
+			<div class="feature">
+				<div class="feature__icon"></div>
+				<h3 class="feature__title">Regularly updated with new Pokémon and fixes</h3>
+			</div>
+			<div class="feature">
+				<div class="feature__icon"></div>
+				<h3 class="feature__title">Built for speed and flexibility</h3>
+			</div>
+		</div>
+		<p class="why-choose-us__footer">Many older generators stop at Gen 6 or require login—ours does neither. It just works.</p>
+	</div>
+</section>
+
+<!-- Try It Now Section -->
+<section class="try-now">
+	<div class="try-now__container">
+		<h2 class="try-now__title">Try It Now</h2>
+		<p class="try-now__description">If you're ready to explore new Pokémon, try new teams, or just have fun with randomness, this tool is ready for you.</p>
+		<div class="try-now__cta">
+			<a href="/index-new.html" class="try-now__button">Click the "Generate Pokémon" button to get started now</a>
+		</div>
+		<div class="try-now__share">
+			<h3 class="try-now__share-title">Share and Bookmark</h3>
+			<p class="try-now__share-description">Found a great random Pokémon combo? Share it with friends or save the page. This tool is always here, always free, and always fun.</p>
+			<p class="try-now__brand">randompokegenerator.com — your go-to destination for Pokémon randomization.</p>
 		</div>
 	</div>
 </section>
@@ -191,6 +366,135 @@ function toggleMobileMenu() {
 	const navbar = document.querySelector('.navbar');
 	navbar.classList.toggle('navbar--open');
 }
+
+// Theme Switcher Logic
+class ThemeSwitcher {
+	constructor() {
+		this.currentTheme = 'dark'; // Default theme
+		this.themeSwitcher = document.getElementById('themeSwitcher');
+		this.themeDropdown = document.getElementById('themeDropdown');
+		this.themeOptions = document.querySelectorAll('.theme-switcher__option');
+		this.themeIcon = document.querySelector('.theme-switcher__icon');
+		this.themeText = document.querySelector('.theme-switcher__text');
+		
+		this.init();
+	}
+	
+	init() {
+		// Load saved theme or detect system preference
+		this.loadTheme();
+		
+		// Add event listeners
+		this.themeSwitcher.addEventListener('click', (e) => {
+			e.stopPropagation();
+			this.toggleDropdown();
+		});
+		
+		this.themeOptions.forEach(option => {
+			option.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const theme = option.dataset.theme;
+				this.setTheme(theme);
+				this.closeDropdown();
+			});
+		});
+		
+		// Close dropdown when clicking outside
+		document.addEventListener('click', () => {
+			this.closeDropdown();
+		});
+		
+		// Listen for system theme changes
+		if (window.matchMedia) {
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (this.currentTheme === 'system') {
+					this.applyTheme('system');
+				}
+			});
+		}
+	}
+	
+	loadTheme() {
+		// Try to load from localStorage
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+			this.setTheme(savedTheme);
+		} else {
+			// Default to system preference
+			this.setTheme('system');
+		}
+	}
+	
+	setTheme(theme) {
+		this.currentTheme = theme;
+		this.applyTheme(theme);
+		this.updateUI(theme);
+		this.saveTheme(theme);
+	}
+	
+	applyTheme(theme) {
+		// Apply theme to document
+		document.documentElement.setAttribute('data-theme', theme);
+		
+		// Update meta theme-color for mobile browsers
+		const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+		if (metaThemeColor) {
+			if (theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				metaThemeColor.setAttribute('content', '#f8fafc');
+			} else {
+				metaThemeColor.setAttribute('content', '#4f46e5');
+			}
+		}
+	}
+	
+	updateUI(theme) {
+		// Update active state
+		this.themeOptions.forEach(option => {
+			option.classList.toggle('active', option.dataset.theme === theme);
+		});
+		
+		// Update button icon and text
+		const themeConfig = {
+			light: { icon: '☀️', text: 'Light' },
+			dark: { icon: '🌙', text: 'Dark' },
+			system: { icon: '💻', text: 'System' }
+		};
+		
+		const config = themeConfig[theme];
+		if (config) {
+			this.themeIcon.textContent = config.icon;
+			this.themeText.textContent = config.text;
+		}
+	}
+	
+	saveTheme(theme) {
+		localStorage.setItem('theme', theme);
+	}
+	
+	toggleDropdown() {
+		const isVisible = this.themeDropdown.classList.contains('visible');
+		if (isVisible) {
+			this.closeDropdown();
+		} else {
+			this.openDropdown();
+		}
+	}
+	
+	openDropdown() {
+		this.themeDropdown.classList.add('visible');
+		this.themeSwitcher.parentElement.classList.add('theme-switcher--open');
+	}
+	
+	closeDropdown() {
+		this.themeDropdown.classList.remove('visible');
+		this.themeSwitcher.parentElement.classList.remove('theme-switcher--open');
+	}
+}
+
+// Initialize theme switcher when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+	new ThemeSwitcher();
+});
 </script>
 
 </body>

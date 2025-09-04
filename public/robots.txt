@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow crawling of framework and development files
+Disallow: /framework/
+Disallow: /dex/
+Disallow: /sprites/
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.json$
+
+# Allow important pages
+Allow: /index.html
+Allow: /index-new.html
+Allow: /team-builder.html
+Allow: /type-calculator.html
+Allow: /favorites.html
+Allow: /demo.html
+
+# Sitemap location
+Sitemap: https://randompokemon.com/sitemap.xml
+
+# Crawl delay to be respectful to server resources
+Crawl-delay: 1
