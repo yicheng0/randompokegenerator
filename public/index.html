@@ -12,9 +12,10 @@
 	</script>
 	
 	<meta charset="UTF-8">
-	<title>Free Random Pokémon Generator & Pokémon Randomizer Tool | randompokegenerator.com</title>
-	<!-- 引入全局样式 -->
-	<link rel="stylesheet" href="./style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Randompoke - Free Pokémon Generator</title>
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="style.css">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<style>
 		/* Light mode overrides */
@@ -32,19 +33,6 @@
 		[data-theme="light"] .footer-section { background-color: #f8fafc; border-color: #e2e8f0; }
 		[data-theme="light"] .checkmark { color: #f59e0b; }
 	</style>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: dark)">
-
-	<meta name="description" content="Ultimate free random Pokémon generator and randomizer tool. Generate random Pokémon by type, region, evolution stage, and more. No login required, 100% free, supports all generations Gen 1-9.">
-	<meta name="keywords" content="random pokemon generator, pokemon randomizer, free pokemon generator, random pokemon tool, pokemon generator by type, pokemon generator by region, evolution stage pokemon randomizer">
-
-	<link rel="canonical" href="https://randompokemon.com" />
-	<link rel="icon" href="./favicon.ico">
-	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
-	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
-	<link rel="manifest" href="./manifest.webmanifest">
 	
 	<!-- Structured Data -->
 	<script type="application/ld+json">
@@ -80,48 +68,12 @@
 	}
 	</script>
 </head>
-<body>
+<body class="bg-[#0f172a] text-white">
+  <!-- ✅ 动态引入统一头部 -->
+  <div id="header"></div>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-	<div class="navbar__container">
-		<div class="navbar__brand">
-			<a href="/" class="navbar__logo"> Randompoke</a>
-		</div>
-		<div class="navbar__menu">
-			<a href="/index-new.html" class="navbar__link">Random Generator</a>
-			<a href="/team-builder.html" class="navbar__link">Team Builder</a>
-			<a href="/type-calculator.html" class="navbar__link">Type Calculator</a>
-			<a href="/favorites.html" class="navbar__link">My Favorites</a>
-			<div class="theme-switcher">
-				<button class="theme-switcher__button" id="themeSwitcher">
-					<span class="theme-switcher__icon">🌙</span>
-					<span class="theme-switcher__text">Theme</span>
-					<span class="theme-switcher__arrow">▼</span>
-				</button>
-				<div class="theme-switcher__dropdown" id="themeDropdown">
-					<button class="theme-switcher__option" data-theme="light">
-						<span class="theme-option__icon">☀️</span>
-						<span class="theme-option__text">Light</span>
-					</button>
-					<button class="theme-switcher__option" data-theme="dark">
-						<span class="theme-option__icon">🌙</span>
-						<span class="theme-option__text">Dark</span>
-					</button>
-					<button class="theme-switcher__option" data-theme="system">
-						<span class="theme-option__icon">💻</span>
-						<span class="theme-option__text">System</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
-</nav>
+  <!-- ✅ 中间主体内容 (保留 index.html 原来的 Hero + Features) -->
+  <main>
 
 <!-- Hero Section -->
 <section class="hero-section text-center py-20 px-4 bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
@@ -132,7 +84,7 @@
 		<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
 			Instantly generate random Pokémon by type, region, and more — all in one click.
 		</p>
-		<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105">
+		<a href="Random Generator.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105">
 			Generate Pokémon Now ↓
 		</a>
 	</div>
@@ -175,7 +127,7 @@
 			</div>
 		</div>
 		<div class="text-center">
-			<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300">
+			<a href="Random Generator.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300">
 				Try Random Pokemon Generator
 			</a>
 		</div>
@@ -297,7 +249,7 @@
 		<p class="section-text text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
 			Explore new Pokémon, build random teams, or just have fun with randomness — this tool is ready for you.
 		</p>
-		<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 mb-12">
+		<a href="Random Generator.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 mb-12">
 			Try the Random Pokémon Generator
 		</a>
 		<div class="border-t border-slate-700 pt-8">
@@ -311,21 +263,10 @@
 		</div>
 	</div>
 </section>
+  </main>
 
-<!-- Footer -->
-<footer class="footer">
-	<div class="footer__container">
-		<div class="footer__links">
-			<a href="https://github.com/yicheng0/randompokegenerator" class="footer__link">GitHub</a>
-			<a href="#" class="footer__link">Privacy Policy</a>
-			<a href="#" class="footer__link">Terms</a>
-		</div>
-		<div class="footer__copyright">
-			<p>© 2025 Randompoke. All rights reserved.</p>
-			<p>Pokémon is © Nintendo. Website is © <a href="https://drewm.com">Drew Mitchell</a>.</p>
-		</div>
-	</div>
-</footer>
+  <!-- ✅ 动态引入统一 Footer -->
+  <div id="footer"></div>
 
 <!-- Scripts -->
 <script>
@@ -501,6 +442,25 @@ class ThemeSwitcher {
 // Initialize theme switcher when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
 	new ThemeSwitcher();
+});
+
+// 动态加载 Header 和 Footer - 确保在 DOM 加载后执行
+document.addEventListener('DOMContentLoaded', function() {
+  fetch("/header.html?v=" + Date.now())
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header").innerHTML = html;
+      console.log('Header loaded successfully');
+    })
+    .catch(error => console.error('Error loading header:', error));
+
+  fetch("/footer.html?v=" + Date.now())
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer").innerHTML = html;
+      console.log('Footer loaded successfully');
+    })
+    .catch(error => console.error('Error loading footer:', error));
 });
 </script>
 

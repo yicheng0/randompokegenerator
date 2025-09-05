@@ -5,30 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Favorites - Randompoke</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="./favicon.ico">
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar__container">
-            <div class="navbar__brand">
-                <a href="/" class="navbar__logo"> Randompoke</a>
-            </div>
-            <div class="navbar__menu">
-                <a href="/index-new.html" class="navbar__link">Random Generator</a>
-                <a href="/team-builder.html" class="navbar__link">Team Builder</a>
-                <a href="/type-calculator.html" class="navbar__link">Type Calculator</a>
-                <a href="/favorites.html" class="navbar__link navbar__link--active">My Favorites</a>
-            </div>
-            <div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+<body class="bg-[#0f172a] text-white">
+    <!-- ✅ 动态引入统一头部 -->
+    <div id="header"></div>
 
     <!-- My Favorites Content -->
     <section class="feature-page">
@@ -65,6 +49,28 @@
         const navbar = document.querySelector('.navbar');
         navbar.classList.toggle('navbar--open');
     }
+
+    // 动态加载 Header 和 Footer - 确保在 DOM 加载后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch("/header.html?v=" + Date.now())
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("header").innerHTML = html;
+          console.log('Header loaded successfully');
+        })
+        .catch(error => console.error('Error loading header:', error));
+
+      fetch("/footer.html?v=" + Date.now())
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("footer").innerHTML = html;
+          console.log('Footer loaded successfully');
+        })
+        .catch(error => console.error('Error loading footer:', error));
+    });
     </script>
+
+    <!-- ✅ 动态引入统一 Footer -->
+    <div id="footer"></div>
 </body>
 </html>

@@ -5,66 +5,335 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Builder - Randompoke</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for analysis tabs */
+        .analysis-tab.active {
+            background-color: #2563eb !important;
+            color: white !important;
+        }
+        
+        .analysis-tab:not(.active) {
+            background-color: #374151;
+            color: #cbd5e1;
+        }
+        
+        .analysis-tab:not(.active):hover {
+            background-color: #4b5563;
+        }
+        
+        /* Ensure proper grid layout on smaller screens */
+        @media (max-width: 768px) {
+            .grid.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .grid.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
     <link rel="icon" href="./favicon.ico">
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar__container">
-            <div class="navbar__brand">
-                <a href="/" class="navbar__logo"> Randompoke</a>
-            </div>
-            <div class="navbar__menu">
-                <a href="/index-new.html" class="navbar__link">Random Generator</a>
-                <a href="/team-builder.html" class="navbar__link navbar__link--active">Team Builder</a>
-                <a href="/type-calculator.html" class="navbar__link">Type Calculator</a>
-                <a href="/favorites.html" class="navbar__link">My Favorites</a>
-            </div>
-            <div class="navbar__mobile-toggle" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- ✅ 动态引入统一头部 -->
+    <div id="header"></div>
 
     <!-- Team Builder Content -->
-    <section class="feature-page">
-        <div class="feature-page__container">
-            <header class="feature-page__header">
-                <div class="feature-page__icon">🧬</div>
-                <h1>Team Builder</h1>
-                <p>Build your dream Pokémon team with detailed customization options</p>
+    <main class="team-builder">
+        <div class="team-builder__container">
+            <!-- Header -->
+            <header class="team-builder__header">
+                <h1 class="team-builder__title">Pokémon Team Builder</h1>
+                <p class="team-builder__subtitle">Build your perfect Pokémon team with advanced filtering and analysis</p>
             </header>
 
-            <main class="feature-page__content">
-                <div class="coming-soon-card">
-                    <h2>🚧 Coming Soon!</h2>
-                    <p>The Team Builder feature is currently under development.</p>
-                    <p>Soon you'll be able to:</p>
-                    <ul class="feature-list">
-                        <li>🎯 Build teams of up to 6 Pokémon</li>
-                        <li>✨ Toggle shiny variants</li>
-                        <li>🎭 Select different forms and genders</li>
-                        <li>📊 View detailed stats and movesets</li>
-                        <li>💾 Save and share your teams</li>
-                    </ul>
-                    <button class="cta-button" onclick="window.location.href='/'">
-                        Back to Home
-                    </button>
+            <!-- Team Management Bar -->
+            <div class="bg-gray-800 rounded-lg p-6 mb-8 shadow-lg border border-gray-700">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex flex-wrap gap-3">
+                        <button id="clearTeam" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors duration-200">
+                            Clear Team
+                        </button>
+                        <button id="randomFill" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200">
+                            Fill Random
+                        </button>
+                        <button id="saveTeam" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors duration-200">
+                            Save Team
+                        </button>
+                        <button id="loadTeam" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors duration-200">
+                            Load Team
+                        </button>
+                    </div>
+                    <div class="text-white font-medium">
+                        <span id="teamCount">0</span>/6 Pokémon
+                    </div>
                 </div>
-            </main>
-        </div>
-    </section>
+            </div>
 
+            <!-- Main Content Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left Panel: Search and Pokemon List -->
+                <aside class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 h-fit">
+                    <div class="search-section">
+                        <h3 class="text-white text-xl font-semibold mb-6">Search Pokémon</h3>
+                        <div class="space-y-4">
+                            <input type="text" id="pokemonSearch" placeholder="Search by name or number..." 
+                                   class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors">
+                            <div class="flex gap-3">
+                                <select id="typeFilter" class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                    <option value="">All Types</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="fire">Fire</option>
+                                    <option value="water">Water</option>
+                                    <option value="electric">Electric</option>
+                                    <option value="grass">Grass</option>
+                                    <option value="ice">Ice</option>
+                                    <option value="fighting">Fighting</option>
+                                    <option value="poison">Poison</option>
+                                    <option value="ground">Ground</option>
+                                    <option value="flying">Flying</option>
+                                    <option value="psychic">Psychic</option>
+                                    <option value="bug">Bug</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="ghost">Ghost</option>
+                                    <option value="dragon">Dragon</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="steel">Steel</option>
+                                    <option value="fairy">Fairy</option>
+                                </select>
+                                <select id="regionFilter" class="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                    <option value="">All Regions</option>
+                                    <option value="kanto">Kanto</option>
+                                    <option value="johto">Johto</option>
+                                    <option value="hoenn">Hoenn</option>
+                                    <option value="sinnoh">Sinnoh</option>
+                                    <option value="unova">Unova</option>
+                                    <option value="kalos">Kalos</option>
+                                    <option value="alola">Alola</option>
+                                    <option value="galar">Galar</option>
+                                    <option value="paldea">Paldea</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pokemon-list-container mt-6">
+                        <div id="pokemonList" class="pokemon-list">
+                            <!-- Pokemon cards will be dynamically generated here -->
+                        </div>
+                        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                            <div class="spinner"></div>
+                            <p class="text-slate-300">Loading Pokémon...</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right Panel: Team Slots and Analysis -->
+                <main class="space-y-8">
+                    <!-- Team Slots -->
+                    <section class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                        <h3 class="text-white text-xl font-semibold mb-6">Your Team</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="0">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">1</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="1">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">2</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="2">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">3</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="3">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">4</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">5</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                            <div class="team-slot bg-gray-700 rounded-lg p-4 border-2 border-dashed border-gray-600 hover:border-blue-500 cursor-pointer transition-colors duration-200 aspect-square flex items-center justify-center" data-slot="5">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-400 mb-2">6</div>
+                                    <p class="text-slate-300 text-sm">Click to add</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Team Analysis -->
+                    <section class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                        <h3 class="text-white text-xl font-semibold mb-6">Team Analysis</h3>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <button class="analysis-tab px-4 py-2 bg-blue-600 text-white rounded-lg font-medium active" data-tab="types">Type Coverage</button>
+                            <button class="analysis-tab px-4 py-2 bg-gray-700 text-slate-300 hover:bg-gray-600 rounded-lg font-medium transition-colors" data-tab="stats">Stats</button>
+                            <button class="analysis-tab px-4 py-2 bg-gray-700 text-slate-300 hover:bg-gray-600 rounded-lg font-medium transition-colors" data-tab="weaknesses">Weaknesses</button>
+                        </div>
+                        
+                        <div class="analysis-content">
+                            <!-- Type Coverage Tab -->
+                            <div id="typesAnalysis" class="analysis-panel active">
+                                <div class="type-coverage">
+                                    <h4 class="text-white text-lg font-medium mb-4">Offensive Coverage</h4>
+                                    <div id="offensiveTypes" class="type-grid mb-6">
+                                        <!-- Dynamically generated -->
+                                    </div>
+                                    <h4 class="text-white text-lg font-medium mb-4">Defensive Types</h4>
+                                    <div id="defensiveTypes" class="type-grid">
+                                        <!-- Dynamically generated -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats Tab -->
+                            <div id="statsAnalysis" class="analysis-panel" style="display: none;">
+                                <div class="team-stats-chart">
+                                    <h4 class="text-white text-lg font-medium mb-4">Average Base Stats</h4>
+                                    <div id="statsChart" class="stats-bars">
+                                        <!-- Dynamically generated -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Weaknesses Tab -->
+                            <div id="weaknessesAnalysis" class="analysis-panel" style="display: none;">
+                                <div class="weakness-analysis">
+                                    <h4 class="text-white text-lg font-medium mb-4">Team Weaknesses</h4>
+                                    <div id="weaknessChart" class="weakness-grid">
+                                        <!-- Dynamically generated -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pokemon Detail Modal -->
+    <div id="pokemonModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalPokemonName">Pokemon Name</h3>
+                <button class="modal-close" onclick="closePokemonModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pokemon-detail">
+                    <div class="pokemon-image">
+                        <img id="modalPokemonSprite" src="" alt="Pokemon sprite">
+                        <div class="pokemon-options">
+                            <label>
+                                <input type="checkbox" id="modalShinyToggle"> Shiny
+                            </label>
+                        </div>
+                    </div>
+                    <div class="pokemon-info">
+                        <div class="pokemon-stats">
+                            <h4>Base Stats</h4>
+                            <div id="modalPokemonStats" class="stat-list">
+                                <!-- Dynamically generated -->
+                            </div>
+                        </div>
+                        <div class="pokemon-types">
+                            <h4>Types</h4>
+                            <div id="modalPokemonTypes" class="type-badges">
+                                <!-- Dynamically generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors" onclick="closePokemonModal()">Cancel</button>
+                <button class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors" onclick="addToTeam()">Add to Team</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Pokemon data -->
+    <script src="./random.js"></script>
+    <script src="./team-builder.js"></script>
     <script>
     // Mobile menu toggle
     function toggleMobileMenu() {
         const navbar = document.querySelector('.navbar');
         navbar.classList.toggle('navbar--open');
     }
+    
+    // Analysis tab switching
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.analysis-tab');
+        const panels = document.querySelectorAll('.analysis-panel');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetTab = this.dataset.tab;
+                
+                // Remove active class from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.style.backgroundColor = '#374151';
+                    t.style.color = '#cbd5e1';
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                this.style.backgroundColor = '#2563eb';
+                this.style.color = 'white';
+                
+                // Hide all panels
+                panels.forEach(panel => {
+                    panel.style.display = 'none';
+                });
+                
+                // Show target panel
+                const targetPanel = document.getElementById(targetTab + 'Analysis');
+                if (targetPanel) {
+                    targetPanel.style.display = 'block';
+                }
+            });
+        });
+    });
+
+    // 动态加载 Header 和 Footer - 确保在 DOM 加载后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch("/header.html?v=" + Date.now())
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("header").innerHTML = html;
+          console.log('Header loaded successfully');
+        })
+        .catch(error => console.error('Error loading header:', error));
+
+      fetch("/footer.html?v=" + Date.now())
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("footer").innerHTML = html;
+          console.log('Footer loaded successfully');
+        })
+        .catch(error => console.error('Error loading footer:', error));
+    });
     </script>
+
+    <!-- ✅ 动态引入统一 Footer -->
+    <div id="footer"></div>
 </body>
 </html>
