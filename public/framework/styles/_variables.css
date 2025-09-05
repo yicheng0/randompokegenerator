@@ -44,16 +44,16 @@
   --color-red-dark: #c82333;
   --color-orange: #fd7e14;
   --color-orange-dark: #e8620c;
-  --color-purple: #6f42c1;
-  --color-purple-dark: #59359a;
+  --color-purple: #7c3aed;
+  --color-purple-dark: #6b21a8;
   
   /* Gradient Colors */
   --gradient-electric: linear-gradient(135deg, #f7d02c 0%, #ffd700 100%);
   --gradient-fire: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
   --gradient-water: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-grass: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-primary: linear-gradient(135deg, var(--color-blue) 0%, var(--color-purple) 100%);
+  --gradient-hero: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   --gradient-yellow: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
   --gradient-green: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
   

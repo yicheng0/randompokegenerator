@@ -3,7 +3,7 @@
   /* Light Theme Variables */
   --bg-primary-light: linear-gradient(135deg, #f8fafc, #e2e8f0);
   --bg-secondary-light: #ffffff;
-  --bg-tertiary-light: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --bg-tertiary-light: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   --text-primary-light: #0f172a;
   --text-secondary-light: #334155;
   --text-accent-light: #f59e0b;
@@ -12,13 +12,13 @@
   --shadow-light: rgba(15, 23, 42, 0.15);
   --card-bg-light: rgba(255, 255, 255, 0.9);
   --navbar-bg-light: rgba(255, 255, 255, 0.95);
-  --hero-bg-light: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --hero-bg-light: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   --section-bg-alt-light: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   
   /* Dark Theme Variables */
   --bg-primary-dark: linear-gradient(135deg, #0f172a, #1e293b);
   --bg-secondary-dark: #1e293b;
-  --bg-tertiary-dark: linear-gradient(135deg, #312e81 0%, #581c87 100%);
+  --bg-tertiary-dark: linear-gradient(135deg, #1e40af 0%, #6b21a8 100%);
   --text-primary-dark: #f1f5f9;
   --text-secondary-dark: #cbd5e1;
   --text-accent-dark: #facc15;
@@ -27,7 +27,7 @@
   --shadow-dark: rgba(0, 0, 0, 0.3);
   --card-bg-dark: rgba(30, 41, 59, 0.8);
   --navbar-bg-dark: rgba(0, 0, 0, 0.3);
-  --hero-bg-dark: linear-gradient(135deg, #312e81 0%, #581c87 100%);
+  --hero-bg-dark: linear-gradient(135deg, #1e40af 0%, #6b21a8 100%);
   --section-bg-alt-dark: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   
   /* Default to dark theme */
@@ -1004,9 +1004,9 @@ input[type="checkbox"] {
 }
 
 .feature-card__button--purple {
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
 }
 
 .feature-card__button:hover {
@@ -1032,7 +1032,7 @@ input[type="checkbox"] {
 }
 
 .feature-card__button--purple:hover {
-  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.5);
 }
 
 /* Stats Section - 全宽设计 */
@@ -1268,7 +1268,7 @@ input[type="checkbox"] {
 /* Generator Page 样式 */
 .generator-page {
   width: 100%;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #8b5cf6 100%);
   min-height: 100vh;
   padding: 40px 0;
 }
@@ -1295,7 +1295,7 @@ input[type="checkbox"] {
 /* Feature Pages 样式 (Team Builder, Type Calculator, My Favorites) */
 .feature-page {
   width: 100%;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #8b5cf6 100%);
   min-height: 100vh;
   padding: 60px 0;
 }

@@ -15,19 +15,36 @@
 	<title>Free Random Pokémon Generator & Pokémon Randomizer Tool | randompokegenerator.com</title>
 	<!-- 引入全局样式 -->
 	<link rel="stylesheet" href="./style.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		/* Light mode overrides */
+		[data-theme="light"] .hero-section { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+		[data-theme="light"] .feature-section { background-color: #f8fafc; }
+		[data-theme="light"] .feature-card { background-color: #ffffff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+		[data-theme="light"] .feature-title { color: #0f172a; }
+		[data-theme="light"] .feature-text { color: #334155; }
+		[data-theme="light"] .section-title { color: #0f172a; }
+		[data-theme="light"] .section-text { color: #334155; }
+		[data-theme="light"] .why-section { background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); }
+		[data-theme="light"] .persona-section { background-color: #f8fafc; }
+		[data-theme="light"] .advantage-section { background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); }
+		[data-theme="light"] .advantage-card { background-color: #ffffff; }
+		[data-theme="light"] .footer-section { background-color: #f8fafc; border-color: #e2e8f0; }
+		[data-theme="light"] .checkmark { color: #f59e0b; }
+	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="#9333ea" media="(prefers-color-scheme: dark)">
+	<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: dark)">
 
 	<meta name="description" content="Ultimate free random Pokémon generator and randomizer tool. Generate random Pokémon by type, region, evolution stage, and more. No login required, 100% free, supports all generations Gen 1-9.">
 	<meta name="keywords" content="random pokemon generator, pokemon randomizer, free pokemon generator, random pokemon tool, pokemon generator by type, pokemon generator by region, evolution stage pokemon randomizer">
 
 	<link rel="canonical" href="https://randompokemon.com" />
-	<link rel="icon" href="/favicon.ico">
-	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="./favicon.ico">
+	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+	<link rel="manifest" href="./manifest.webmanifest">
 	
 	<!-- Structured Data -->
 	<script type="application/ld+json">
@@ -107,210 +124,190 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="hero">
-	<div class="hero__container">
-		<h1 class="hero__title">Free Random Pokémon Generator & Pokémon Randomizer Tool</h1>
-		<p class="hero__subtitle">Welcome to the ultimate free random Pokémon generator and Pokémon randomizer tool. Whether you're a seasoned trainer, a casual fan, or a content creator, our platform lets you easily generate random Pokémon based on type, region, evolution stage, and more — all with one click.</p>
-		<a href="#features" class="hero__cta">
-			Generate Pokémon ↓
+<section class="hero-section text-center py-20 px-4 bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
+	<div class="max-w-4xl mx-auto">
+		<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+			Free Random Pokémon Generator
+		</h1>
+		<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+			Instantly generate random Pokémon by type, region, and more — all in one click.
+		</p>
+		<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-8 py-4 rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105">
+			Generate Pokémon Now ↓
 		</a>
 	</div>
 </section>
 
-<!-- What is a Random Pokémon Generator Section -->
-<section id="features" class="features">
-	<div class="features__container">
-		<h2 class="features__title">What is a Random Pokémon Generator?</h2>
-		<p class="features__description">
-			A Pokémon generator is an interactive tool that allows users to randomly generate Pokémon from the complete Pokédex, including all generations. Our random Pokémon generator gives you full control to customize your experience using filters such as:
+<!-- Feature Overview Section -->
+<section id="features" class="feature-section py-16 bg-[#0f172a]">
+	<div class="max-w-6xl mx-auto px-4">
+		<h2 class="section-title text-3xl md:text-4xl font-bold text-white text-center mb-6">Key Features</h2>
+		<p class="section-text text-lg text-slate-400 text-center max-w-3xl mx-auto mb-12">
+			Our random Pokémon generator gives you complete control with advanced filtering options.
 		</p>
-		<div class="features__grid">
-			<div class="feature-card">
-				<div class="feature-card__icon"></div>
-				<h3 class="feature-card__title">Type Filtering</h3>
-				<p class="feature-card__description">
-					Fire, water, electric, ghost, fairy, steel, and more - filter by any of the 18 Pokémon types.
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Type Filtering</h3>
+				<p class="feature-text text-slate-400 text-sm leading-relaxed">
+					Filter by any of the 18 Pokémon types like fire, water, electric, ghost, fairy, and more.
 				</p>
 			</div>
 
-			<div class="feature-card">
-				<div class="feature-card__icon"></div>
-				<h3 class="feature-card__title">Region Selection</h3>
-				<p class="feature-card__description">
-					Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, Galar, Paldea - choose your favorite region.
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Region Selection</h3>
+				<p class="feature-text text-slate-400 text-sm leading-relaxed">
+					Choose from Kanto to Paldea and everything in between. All generations supported.
 				</p>
 			</div>
 
-			<div class="feature-card">
-				<div class="feature-card__icon"></div>
-				<h3 class="feature-card__title">Evolution Stage</h3>
-				<p class="feature-card__description">
-					Base, middle, or final forms - control which evolution stage you want to see.
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Evolution Stage</h3>
+				<p class="feature-text text-slate-400 text-sm leading-relaxed">
+					Filter by base, middle, or final evolution stages to get exactly what you need.
 				</p>
 			</div>
 
-			<div class="feature-card">
-				<div class="feature-card__icon"></div>
-				<h3 class="feature-card__title">Special Categories</h3>
-				<p class="feature-card__description">
-					Legendaries, mythicals, ultra beasts, Paradox Pokémon, and more special categories.
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Special Categories</h3>
+				<p class="feature-text text-slate-400 text-sm leading-relaxed">
+					Legendaries, mythicals, ultra beasts, and Paradox Pokémon — all included.
 				</p>
 			</div>
 		</div>
-		<p class="features__footer">
-			Whether you're building a new challenge team, exploring Pokémon for fan art, or just want some fun, this free Pokémon tool is made for you.
-		</p>
-		<div class="features__cta">
-			<a href="/index-new.html" class="feature-card__button feature-card__button--yellow">
+		<div class="text-center">
+			<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300">
 				Try Random Pokemon Generator
 			</a>
 		</div>
 	</div>
 </section>
 
-<!-- Why Use a Pokémon Randomizer Section -->
-<section class="why-use">
-	<div class="why-use__container">
-		<h2 class="why-use__title">Why Use a Pokémon Randomizer?</h2>
-		<p class="why-use__intro">Our Pokémon randomizer brings excitement and surprise to any gameplay or creative project. With just one click, you can:</p>
-		<div class="why-use__benefits">
-			<div class="benefit">
-				<div class="benefit__icon"></div>
-				<h3 class="benefit__title">Build Random Teams</h3>
-				<p class="benefit__description">Build random teams for Nuzlocke runs or showdowns</p>
-			</div>
-			<div class="benefit">
-				<div class="benefit__icon"></div>
-				<h3 class="benefit__title">Discover New Pokémon</h3>
-				<p class="benefit__description">Discover lesser-known or underrated Pokémon</p>
-			</div>
-			<div class="benefit">
-				<div class="benefit__icon"></div>
-				<h3 class="benefit__title">Creative Inspiration</h3>
-				<p class="benefit__description">Generate creative prompts for drawing or content creation</p>
-			</div>
-			<div class="benefit">
-				<div class="benefit__icon"></div>
-				<h3 class="benefit__title">Balanced Teams</h3>
-				<p class="benefit__description">Create balanced teams based on types or evolution stages</p>
-			</div>
-		</div>
-		<p class="why-use__footer">Unlike other tools, our generator is 100% free and works instantly—no login, no payment, no limits.</p>
+<!-- Why Use It Section -->
+<section class="why-section py-16 bg-gradient-to-br from-[#1e293b] to-[#334155]">
+	<div class="max-w-4xl mx-auto px-4 text-center">
+		<h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-6">Why Use Our Generator?</h2>
+		<p class="section-text text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+			Bring excitement and surprise to your gameplay or creative projects.
+		</p>
+		<ul class="space-y-4 section-text text-slate-300 max-w-3xl mx-auto text-left mb-8">
+			<li class="flex items-start space-x-3">
+				<span class="checkmark text-yellow-400 text-xl">✓</span>
+				<span class="text-lg">Works offline – no internet needed once loaded</span>
+			</li>
+			<li class="flex items-start space-x-3">
+				<span class="checkmark text-yellow-400 text-xl">✓</span>
+				<span class="text-lg">No ads or trackers</span>
+			</li>
+			<li class="flex items-start space-x-3">
+				<span class="checkmark text-yellow-400 text-xl">✓</span>
+				<span class="text-lg">Free forever, no signup required</span>
+			</li>
+			<li class="flex items-start space-x-3">
+				<span class="checkmark text-yellow-400 text-xl">✓</span>
+				<span class="text-lg">Supports all Pokémon regions and types</span>
+			</li>
+			<li class="flex items-start space-x-3">
+				<span class="checkmark text-yellow-400 text-xl">✓</span>
+				<span class="text-lg">Advanced filtering for perfect results</span>
+			</li>
+		</ul>
 	</div>
 </section>
 
-<!-- Key Features Section -->
-<section class="key-features">
-	<div class="key-features__container">
-		<h2 class="key-features__title">Key Features</h2>
-		<div class="key-features__grid">
-			<div class="key-feature">
-				<div class="key-feature__icon"></div>
-				<h3 class="key-feature__title">Free Forever</h3>
-				<p class="key-feature__description">This Pokémon randomizer tool is completely free. No premium features, no subscriptions, and no ads blocking your experience.</p>
-			</div>
-			<div class="key-feature">
-				<div class="key-feature__icon"></div>
-				<h3 class="key-feature__title">Advanced Filtering</h3>
-				<p class="key-feature__description">Filter Pokémon by type, region, generation, stage, or rarity. Mix and match filters to create exactly the kind of random result you want.</p>
-			</div>
-			<div class="key-feature">
-				<div class="key-feature__icon"></div>
-				<h3 class="key-feature__title">All Generations Supported</h3>
-				<p class="key-feature__description">We include Pokémon from every generation—Gen 1 to Gen 9, plus DLC regions like Kitakami and Blueberry. Whether you're a fan of the classics or the newest entries, it's all here.</p>
-			</div>
-			<div class="key-feature">
-				<div class="key-feature__icon"></div>
-				<h3 class="key-feature__title">Optimized for All Devices</h3>
-				<p class="key-feature__description">Use this tool on desktop, mobile, or tablet. It loads fast, works smoothly, and doesn't require any installation or download.</p>
-			</div>
-			<div class="key-feature">
-				<div class="key-feature__icon"></div>
-				<h3 class="key-feature__title">Shiny Pokémon Mode</h3>
-				<p class="key-feature__description">Toggle shiny mode to generate shiny Pokémon at random. Great for drawing inspiration or challenge setups.</p>
-			</div>
-		</div>
-	</div>
-</section>
 
-<!-- Who Is This For Section -->
-<section class="target-audience">
-	<div class="target-audience__container">
-		<h2 class="target-audience__title">Who Is This For?</h2>
-		<p class="target-audience__intro">This isn't just a fun toy—it's a useful tool for many communities:</p>
-		<div class="target-audience__grid">
-			<div class="audience">
-				<div class="audience__icon"></div>
-				<h3 class="audience__title">Streamers</h3>
-				<p class="audience__description">Add randomness to your challenges and team battles</p>
+<!-- User Personas Section -->
+<section class="persona-section py-16 bg-[#0f172a]">
+	<div class="max-w-6xl mx-auto px-4">
+		<h2 class="section-title text-3xl md:text-4xl font-bold text-white text-center mb-6">Who Is This For?</h2>
+		<p class="section-text text-lg text-slate-400 text-center max-w-2xl mx-auto mb-12">
+			This isn't just a fun toy—it's a useful tool for many communities.
+		</p>
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">Streamers</h3>
+				<p class="feature-text text-slate-400 text-sm">Add random teams to spice up your content and challenges.</p>
 			</div>
-			<div class="audience">
-				<div class="audience__icon"></div>
-				<h3 class="audience__title">Artists</h3>
-				<p class="audience__description">Use random Pokémon prompts for sketching or mashups</p>
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">Artists</h3>
+				<p class="feature-text text-slate-400 text-sm">Get prompts for sketching and creative mashups.</p>
 			</div>
-			<div class="audience">
-				<div class="audience__icon"></div>
-				<h3 class="audience__title">YouTubers and Creators</h3>
-				<p class="audience__description">Build unique content around randomized outcomes</p>
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">YouTubers</h3>
+				<p class="feature-text text-slate-400 text-sm">Generate surprise teams or unique challenge ideas.</p>
 			</div>
-			<div class="audience">
-				<div class="audience__icon"></div>
-				<h3 class="audience__title">TTRPG Game Masters</h3>
-				<p class="audience__description">Create unique Pokémon encounters for players</p>
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">Game Masters</h3>
+				<p class="feature-text text-slate-400 text-sm">Create unique Pokémon encounters for TTRPG sessions.</p>
 			</div>
-			<div class="audience">
-				<div class="audience__icon"></div>
-				<h3 class="audience__title">Casual Fans</h3>
-				<p class="audience__description">Just have fun and find your new favorite Pokémon</p>
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">Casual Fans</h3>
+				<p class="feature-text text-slate-400 text-sm">Just have fun and discover your new favorite Pokémon.</p>
+			</div>
+			<div class="feature-card bg-[#1e293b] p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300">
+				<h3 class="feature-title text-lg text-white font-semibold mb-2">Nuzlockers</h3>
+				<p class="feature-text text-slate-400 text-sm">Build balanced random teams for your next run.</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Why Use randompokegenerator.com Section -->
-<section class="why-choose-us">
-	<div class="why-choose-us__container">
-		<h2 class="why-choose-us__title">Why Use randompokegenerator.com?</h2>
-		<p class="why-choose-us__intro">We focus on one thing: building the fastest and most reliable Pokémon randomizer. Here's what makes us stand out:</p>
-		<div class="why-choose-us__features">
-			<div class="feature">
-				<div class="feature__icon"></div>
-				<h3 class="feature__title">Loads instantly and works offline once cached</h3>
+<!-- Advantages Section -->
+<section class="advantage-section py-16 bg-gradient-to-br from-[#1e293b] to-[#334155]">
+	<div class="max-w-5xl mx-auto px-4">
+		<h2 class="section-title text-3xl md:text-4xl font-bold text-white text-center mb-6">Why Choose Our Generator?</h2>
+		<p class="section-text text-lg text-slate-300 text-center max-w-3xl mx-auto mb-12">
+			Built for speed, reliability, and the best user experience. Here's what sets us apart:
+		</p>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Lightning Fast</h3>
+				<p class="feature-text text-slate-400 text-sm">Loads instantly and works offline once cached. No waiting, no delays.</p>
 			</div>
-			<div class="feature">
-				<div class="feature__icon"></div>
-				<h3 class="feature__title">No signup or login required</h3>
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Free Forever</h3>
+				<p class="feature-text text-slate-400 text-sm">No premium features, no subscriptions, no hidden costs. Always free.</p>
 			</div>
-			<div class="feature">
-				<div class="feature__icon"></div>
-				<h3 class="feature__title">Ad-free experience</h3>
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">No Signup Required</h3>
+				<p class="feature-text text-slate-400 text-sm">Jump right in. No accounts, no emails, no hassle.</p>
 			</div>
-			<div class="feature">
-				<div class="feature__icon"></div>
-				<h3 class="feature__title">Regularly updated with new Pokémon and fixes</h3>
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Mobile Optimized</h3>
+				<p class="feature-text text-slate-400 text-sm">Perfect on desktop, mobile, and tablet. Responsive design for any device.</p>
 			</div>
-			<div class="feature">
-				<div class="feature__icon"></div>
-				<h3 class="feature__title">Built for speed and flexibility</h3>
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">All Generations</h3>
+				<p class="feature-text text-slate-400 text-sm">Gen 1 to Gen 9, plus DLC regions. Complete and up-to-date.</p>
+			</div>
+			<div class="advantage-card bg-[#0f172a] p-6 rounded-xl shadow-lg">
+				<h3 class="feature-title text-xl text-white font-semibold mb-3">Regular Updates</h3>
+				<p class="feature-text text-slate-400 text-sm">Continuously updated with new Pokémon and features.</p>
 			</div>
 		</div>
-		<p class="why-choose-us__footer">Many older generators stop at Gen 6 or require login—ours does neither. It just works.</p>
+		<p class="section-text text-center text-slate-300">
+			Many older generators stop at Gen 6 or require login—ours does neither. <strong class="section-title text-white">It just works.</strong>
+		</p>
 	</div>
 </section>
 
-<!-- Try It Now Section -->
-<section class="try-now">
-	<div class="try-now__container">
-		<h2 class="try-now__title">Try It Now</h2>
-		<p class="try-now__description">If you're ready to explore new Pokémon, try new teams, or just have fun with randomness, this tool is ready for you.</p>
-		<div class="try-now__cta">
-			<a href="/index-new.html" class="try-now__button">Click the "Generate Pokémon" button to get started now</a>
-		</div>
-		<div class="try-now__share">
-			<h3 class="try-now__share-title">Share and Bookmark</h3>
-			<p class="try-now__share-description">Found a great random Pokémon combo? Share it with friends or save the page. This tool is always here, always free, and always fun.</p>
-			<p class="try-now__brand">randompokegenerator.com — your go-to destination for Pokémon randomization.</p>
+<!-- Try It Now Footer -->
+<section class="footer-section py-16 text-center bg-[#0f172a] border-t border-slate-700">
+	<div class="max-w-4xl mx-auto px-4">
+		<h2 class="section-title text-3xl md:text-4xl font-bold text-white mb-6">Ready to Try?</h2>
+		<p class="section-text text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+			Explore new Pokémon, build random teams, or just have fun with randomness — this tool is ready for you.
+		</p>
+		<a href="/index-new.html" class="inline-block bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 mb-12">
+			Try the Random Pokémon Generator
+		</a>
+		<div class="border-t border-slate-700 pt-8">
+			<h3 class="section-title text-xl font-semibold text-white mb-4">Share & Bookmark</h3>
+			<p class="section-text text-slate-400 mb-4 max-w-2xl mx-auto">
+				Found a great random Pokémon combo? Share it with friends or bookmark this page. This tool is always here, always free, and always fun.
+			</p>
+			<p class="text-yellow-400 font-medium">
+				randompokegenerator.com — your go-to destination for Pokémon randomization.
+			</p>
 		</div>
 	</div>
 </section>
@@ -452,7 +449,7 @@ class ThemeSwitcher {
 			if (theme === 'light' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 				metaThemeColor.setAttribute('content', '#f8fafc');
 			} else {
-				metaThemeColor.setAttribute('content', '#4f46e5');
+				metaThemeColor.setAttribute('content', '#2563eb');
 			}
 		}
 	}

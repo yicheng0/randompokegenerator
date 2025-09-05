@@ -1,0 +1,68 @@
+name: Update Sitemap
+
+on:
+  # 当推送到main分支时触发
+  push:
+    branches: [ main ]
+    paths:
+      - '*.html'
+      - 'generate-sitemap.js'
+      - 'package.json'
+  
+  # 允许手动触发
+  workflow_dispatch:
+  
+  # 每周自动运行一次
+  schedule:
+    - cron: '0 0 * * 0'  # 每周日午夜运行
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Navigate to public directory
+      run: cd public
+      
+    - name: Generate sitemap
+      run: |
+        cd public
+        node generate-sitemap.js
+        
+    - name: Check if sitemap changed
+      id: check-changes
+      run: |
+        cd public
+        if git diff --quiet sitemap.xml; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push sitemap changes
+      if: steps.check-changes.outputs.changed == 'true'
+      run: |
+        cd public
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add sitemap.xml
+        git commit -m "🤖 Auto-update sitemap.xml [skip ci]"
+        git push
+    
+    - name: Output result
+      run: |
+        if [ "${{ steps.check-changes.outputs.changed }}" == "true" ]; then
+          echo "✅ Sitemap updated and committed"
+        else
+          echo "ℹ️ Sitemap unchanged, no update needed"
+        fi
